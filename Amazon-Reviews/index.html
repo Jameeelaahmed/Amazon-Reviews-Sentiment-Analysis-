@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="subscribe">
+            <form action="">
+                <textarea placeholder="Enter your email"></textarea>
+                <input type="submit" value="Subscribe">
+            </form>
+        </div>
+
+        <div class="emojies">
+            <div id="angry" class="emoji" onclick="handleFocus1()">
+                <div class="emoji-overlay"></div>
+                <!-- <img width="194" height="194" class="emoji_img"
+                    src="https://img.icons8.com/3d-fluency/94/pouting-face-icon.png" alt="pouting-face-icon" /> -->
+                    <img class="emoji_img" src="/assets/Angry Emoji.png" alt="">
+            </div>
+            <div id="love" class="emoji" onclick="handleFocus2()">
+                <div class="emoji-overlay"></div>
+                <!-- <img src="assets/emoji.png" alt="" class="emoji_img"> -->
+                <!-- <img width="194" height="194" class="emoji_img"
+                    src="https://img.icons8.com/3d-fluency/94/smiling-face-with-hearts-icon.png"
+                    alt="smiling-face-with-hearts-icon" /> -->
+                    <img src="./assets/Smile Emoji With Hearts.png" class="emoji_img">
+            </div>
+
+        </div>
+
+
+    </div>
+
+</body>
+<script>
+    function handleFocus1() {
+        var emoji = document.getElementById("angry");
+        emoji.classList.toggle("active1");
+    }
+    function handleFocus2() {
+        var emoji = document.getElementById("love");
+        emoji.classList.toggle("active2");
+    }
+</script>
+
+</html>
