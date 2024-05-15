@@ -108,22 +108,27 @@
     width: 250px;
 }
 
-.subscribe {
+.subscribe{
     margin-bottom: 100px;
     margin-top: 40px;
     display: flex;
-    align-items: center;
     width: 600px;
     padding: 30px 40px;
     background-color: #1a1625;
     border-radius: 10px;
-    display: flex;
     gap: 20px;
     color: white;
 }
 
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
 
-.subscribe textarea {
+
+.form textarea {
     padding: 10px;
     font-size: 20px;
     border-radius: 20px;
@@ -138,29 +143,29 @@
     border: 5px solid #0075ab;
 }
 
-.subscribe textarea::-webkit-scrollbar{
+.form textarea::-webkit-scrollbar{
     display:none;
 }
 
-.subscribe textarea::-webkit-inner-spin-button,
-.subscribe textarea::-webkit-outter-spin-button {
+.form textarea::-webkit-inner-spin-button,
+.form textarea::-webkit-outter-spin-button {
     display: none;
 }
 
-.subscribe textarea::placeholder {
+.form textarea::placeholder {
     transition: opacity 0.4s;
 }
 
 
-.subscribe textarea:focus::placeholder {
+.form textarea:focus::placeholder {
     opacity: 0;
 }
 
-.subscribe textarea:focus {
+.form textarea:focus {
     outline: none;
 }
 
-.subscribe input[type="submit"] {
+.form input[type="submit"] {
     border-radius: 50px;
     border: none;
     background-color: var(--maincolor);
@@ -170,8 +175,18 @@
     cursor: pointer;
     transition: 0.4s;
     height: 50px;
+    margin-left:20px ;
 }
 
-.subscribe input[type="submit"]:hover {
+.form input[type="submit"]:hover {
     background-color: #0075ab;
+}
+
+.subscribe{
+    display: flex;
+    flex-direction: column;
+}
+
+.error{
+    color: #a3270d;
 }

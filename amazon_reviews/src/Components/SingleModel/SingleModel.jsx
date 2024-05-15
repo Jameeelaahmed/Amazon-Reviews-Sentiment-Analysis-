@@ -6,7 +6,8 @@ export default function SingleModel() {
     const [selectedModel, setSelectedModel] = useState(null);
     const [sentiment, setSentiment] = useState(null); // State variable to store sentiment
     const reviewRef = useRef();
-    const [model,setModel]=useState(false);
+    const [model, setModel] = useState(false);
+    const [error, setError] = useState(false)
 
     const handleModelSelect = (modelName) => {
         console.log(modelName);
@@ -16,9 +17,9 @@ export default function SingleModel() {
         } else {
             setModel(false); // Set model state to false for other models
         }
+        setError(false);
 
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (selectedModel && reviewRef.current.value.trim() !== '') {
@@ -52,11 +53,15 @@ export default function SingleModel() {
         } else {
             console.error('Please select a model and provide a review.');
         }
+
+        if (!model) {
+            setError(prev => (!prev))
+        }
     };
 
     return (
         <div className={classes.container}>
-            <div className={classes.models}>  
+            <div className={classes.models}>
                 <button className={classes.button} onClick={() => handleModelSelect('Naive Bayes')}>
                     Naive Bayes
                 </button>
@@ -72,13 +77,18 @@ export default function SingleModel() {
             </div>
 
             <form className={classes.subscribe} onSubmit={handleSubmit}>
-                <textarea
-                    placeholder="Enter your review"
-                    ref={reviewRef}
-                    value={reviewValue}
-                    onChange={(e) => setReviewValue(e.target.value)}
-                ></textarea>
-                <input type="submit" value="Submit" />
+                <div className={classes.form}>
+                    <textarea
+                        placeholder="Enter your review"
+                        ref={reviewRef}
+                        value={reviewValue}
+                        onChange={(e) => setReviewValue(e.target.value)}
+                    ></textarea>
+                    <input type="submit" value="Submit" />
+                </div>
+                <div>
+                    {error && <p className={classes.error}>you havenot select a model yet!</p>}
+                </div>
             </form>
 
             <div className={classes.emojies}>
