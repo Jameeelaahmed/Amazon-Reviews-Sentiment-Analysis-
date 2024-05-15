@@ -1,47 +1,80 @@
-import classes from './SingleModel.module.css';
 import { useState, useRef } from 'react';
+import classes from './SingleModel.module.css'; // Assuming classes are defined in SingleModel.module.css
 
 export default function SingleModel() {
     const [reviewValue, setReviewValue] = useState('');
+    const [selectedModel, setSelectedModel] = useState(null);
     const reviewRef = useRef();
 
-    function handleFocus1() {
-        // handle focus 1 logic
-    }
+    const handleModelSelect = (modelName) => {
+        console.log(modelName);
+        setSelectedModel(modelName);
+    };
 
-    function handleFocus2() {
-        // handle focus 2 logic
-    }
-
-    function handleSubmit(e) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setReviewValue(reviewRef.current.value);
-    }
-
-    console.log(reviewValue)
+        if (selectedModel && reviewRef.current.value.trim() !== '') {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/send_review', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        reviewText: reviewRef.current.value,
+                        modelName: selectedModel,
+                    }),
+                });
+                if (response.ok) {
+                    console.log('Review submitted successfully!');
+                    // Reset review input and selected model after submission
+                    setReviewValue('');
+                    setSelectedModel(null);
+                } else {
+                    console.error('Failed to submit review:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error submitting review:', error.message);
+            }
+        } else {
+            console.error('Please select a model and provide a review.');
+        }
+    };
 
     return (
         <div className={classes.container}>
             <div className={classes.models}>
-                    <button className={classes.button}>Naive Bayes</button>
-                    <button className={classes.button}>Rnn</button>
-                    <button className={classes.button}>Roberta</button>
+                <button className={classes.button} onClick={() => handleModelSelect('Naive Bayes')}>
+                    Naive Bayes
+                </button>
+                <button className={classes.button} onClick={() => handleModelSelect('RNN')}>
+                    RNN
+                </button>
+                <button className={classes.button} onClick={() => handleModelSelect('Roberta')}>
+                    Roberta
+                </button>
             </div>
 
-        
-                <form className={classes.subscribe} onSubmit={handleSubmit}>
-                    <textarea placeholder="Enter your email" ref={reviewRef}></textarea>
-                    <input type="submit" value="Subscribe" />
-                </form>
-
-
+            <form className={classes.subscribe} onSubmit={handleSubmit}>
+                <textarea
+                    placeholder="Enter your review"
+                    ref={reviewRef}
+                    value={reviewValue}
+                    onChange={(e) => setReviewValue(e.target.value)}
+                ></textarea>
+                <input type="submit" value="Submit" />
+            </form>
 
             <div className={classes.emojies}>
-                <div id="angry" className={classes.emoji} onClick={handleFocus1}>
+                <div id="angry" className={classes.emoji} onClick={() => console.log('Angry clicked')}>
                     <img className={classes.emoji_img} src="/src/assets/Angry Emoji.png" alt="" />
                 </div>
-                <div id="love" className={classes.emoji} onClick={handleFocus2}>
-                    <img src="/src/assets/Smile Emoji With Hearts.png" className={classes.emoji_img} />
+                <div id="love" className={classes.emoji} onClick={() => console.log('Love clicked')}>
+                    <img
+                        src="/src/assets/Smile Emoji With Hearts.png"
+                        className={classes.emoji_img}
+                        alt=""
+                    />
                 </div>
             </div>
         </div>
