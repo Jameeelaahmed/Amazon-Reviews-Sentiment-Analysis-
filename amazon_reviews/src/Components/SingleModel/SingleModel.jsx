@@ -29,6 +29,14 @@ export default function SingleModel() {
                 </form>
             </div>
 
+            <div className={classes.models}>
+                <div className={classes.tabs}>
+                    <div className={classes.model}>Naive Bayes</div>
+                    <div className={classes.model}>Rnn</div>
+                    <div className={classes.model}>Roberta</div>
+                </div>
+            </div>
+
             <div className={classes.emojies}>
                 <div id="angry" className={classes.emoji} onClick={handleFocus1}>
                     <img className={classes.emoji_img} src="/src/assets/Angry Emoji.png" alt="" />
