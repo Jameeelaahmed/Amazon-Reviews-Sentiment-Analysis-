@@ -28,12 +28,12 @@ export default function SingleModel() {
                     <button className={classes.button}>Roberta</button>
             </div>
 
-            <div className={classes.subscribe}>
-                <form onSubmit={handleSubmit}>
+        
+                <form className={classes.subscribe} onSubmit={handleSubmit}>
                     <textarea placeholder="Enter your email" ref={reviewRef}></textarea>
                     <input type="submit" value="Subscribe" />
                 </form>
-            </div>
+
 
 
             <div className={classes.emojies}>
