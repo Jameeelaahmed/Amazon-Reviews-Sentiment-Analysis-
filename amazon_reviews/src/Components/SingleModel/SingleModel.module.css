@@ -4,6 +4,60 @@
     flex-direction: column;
 }
 
+.models{
+    display: flex;
+    justify-content: space-around;
+}
+
+.model{
+    background-color: #0075ab;
+    padding: 15px;
+    text-align: center;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    color:#0075ab;
+    box-shadow: 5px 5px 0 0 #0075ab;
+    border: 3px solid #00487e;
+    transition: all 1000ms;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    outline: 2px solid #0075ab;
+    letter-spacing: 5px;
+}
+
+
+.button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    outline: 2px solid #0075ab;
+    box-shadow: 4px 5px 17px -4px #0075ab;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color:#0075ab;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1000ms;
+}
+
+.button:hover::before {
+    width: 250%;
+}
+
 .emojies {
     display: flex;
     justify-content: center;
@@ -38,7 +92,7 @@
 }
 
 .emoji img {
-    width: 200px;
+    width: 150px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -50,20 +104,21 @@
 }
 
 .subscribe {
-    width: 100%;
     margin-bottom: 100px;
-}
-
-
-.subscribe form {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
     width: 600px;
-    margin: 20px auto;
     padding: 30px 40px;
     background-color: #1a1625;
     border-radius: 10px;
     display: flex;
     gap: 20px;
     color: white;
+}
+
+
+.subscribe form {
 }
 
 .subscribe textarea {
@@ -79,6 +134,10 @@
     background-color: #0075ab00;
     height: 100px;
     border: 5px solid #0075ab;
+}
+
+.subscribe textarea::-webkit-scrollbar{
+    display:none;
 }
 
 .subscribe textarea::-webkit-inner-spin-button,
@@ -108,6 +167,7 @@
     padding: 20px;
     cursor: pointer;
     transition: 0.4s;
+    height: 50px;
 }
 
 .subscribe input[type="submit"]:hover {
