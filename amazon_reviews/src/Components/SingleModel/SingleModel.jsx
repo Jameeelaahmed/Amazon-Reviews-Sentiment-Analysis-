@@ -22,6 +22,12 @@ export default function SingleModel() {
 
     return (
         <div className={classes.container}>
+            <div className={classes.models}>
+                    <button className={classes.button}>Naive Bayes</button>
+                    <button className={classes.button}>Rnn</button>
+                    <button className={classes.button}>Roberta</button>
+            </div>
+
             <div className={classes.subscribe}>
                 <form onSubmit={handleSubmit}>
                     <textarea placeholder="Enter your email" ref={reviewRef}></textarea>
@@ -29,13 +35,6 @@ export default function SingleModel() {
                 </form>
             </div>
 
-            <div className={classes.models}>
-                <div className={classes.tabs}>
-                    <div className={classes.model}>Naive Bayes</div>
-                    <div className={classes.model}>Rnn</div>
-                    <div className={classes.model}>Roberta</div>
-                </div>
-            </div>
 
             <div className={classes.emojies}>
                 <div id="angry" className={classes.emoji} onClick={handleFocus1}>
