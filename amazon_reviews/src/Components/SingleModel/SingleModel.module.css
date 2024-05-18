@@ -2,6 +2,9 @@
 .container {
     display: flex;
     flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .models{
@@ -9,11 +12,6 @@
     justify-content: space-around;
 }
 
-.model{
-    background-color: #0075ab;
-    padding: 15px;
-    text-align: center;
-}
 
 .button {
     padding: 10px 20px;
@@ -31,31 +29,37 @@
     overflow: hidden;
     outline: 2px solid #0075ab;
     letter-spacing: 5px;
+    margin-right: 50px;
 }
 
 
-.button:hover {
+.button:hover,
+.button_active {
     color: #ffffff;
     transform: scale(1.1);
     outline: 2px solid #0075ab;
     box-shadow: 4px 5px 17px -4px #0075ab;
 }
 
-.button::before {
+.button::before{
     content: "";
     position: absolute;
     left: -50px;
     top: 0;
     width: 0;
     height: 100%;
-    background-color:#0075ab;
     transform: skewX(45deg);
     z-index: -1;
     transition: width 1000ms;
 }
 
-.button:hover::before {
+.button:hover::before{
+    background-color:#0075ab;
     width: 250%;
+}
+
+.button_active{
+    background-color:#0075ab;
 }
 
 .emojies {
@@ -73,6 +77,7 @@
     /* border: 15px solid #ff3300; */
     /* background: conic-gradient(from 0deg, #ff3300 0deg, transparent 0deg); */
     transition: 0.4s;
+    transform: scale(0.7);
 }
 
 .emoji:first-child {
@@ -82,7 +87,7 @@
 .emoji.active1 {
     /* background: conic-gradient(from 0deg, #ff3300 360deg, rgb(237, 237, 237) 0deg); */
     transform: scale(1.1);
-    box-shadow: 0 0 10px #ff33003b, 0 0 20px #ff33006a, 0 0 30px #ff33008f, 0 0 40px #ff3300a1, 0 0 50px #ff3300c6, 0 0 60px #ff3300dd, 0 0 70px #ff3300, 0 0 80px #ff3300, 0 0 90px #ff3300;
+    box-shadow: 0 0 10px #ff33003b, 0 0 20px #ff33006a, 0 0 30px #ff33008f, 0 0 40px #ff3300a1, 0 0 50px #ff3300c6, 0 0 60px #ff3300dd, 0 0 70px #ff3300, 0 0 80px #ff3300, 0 0 90px #ff3300, 0 0 100px #ff3300,0 0 110px #ff3300;
 }
 
 .emoji.active2 {
@@ -103,25 +108,27 @@
     width: 250px;
 }
 
-.subscribe {
+.subscribe{
     margin-bottom: 100px;
     margin-top: 40px;
     display: flex;
-    align-items: center;
     width: 600px;
     padding: 30px 40px;
     background-color: #1a1625;
     border-radius: 10px;
-    display: flex;
     gap: 20px;
     color: white;
 }
 
-
-.subscribe form {
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
 }
 
-.subscribe textarea {
+
+.form textarea {
     padding: 10px;
     font-size: 20px;
     border-radius: 20px;
@@ -136,29 +143,29 @@
     border: 5px solid #0075ab;
 }
 
-.subscribe textarea::-webkit-scrollbar{
+.form textarea::-webkit-scrollbar{
     display:none;
 }
 
-.subscribe textarea::-webkit-inner-spin-button,
-.subscribe textarea::-webkit-outter-spin-button {
+.form textarea::-webkit-inner-spin-button,
+.form textarea::-webkit-outter-spin-button {
     display: none;
 }
 
-.subscribe textarea::placeholder {
+.form textarea::placeholder {
     transition: opacity 0.4s;
 }
 
 
-.subscribe textarea:focus::placeholder {
+.form textarea:focus::placeholder {
     opacity: 0;
 }
 
-.subscribe textarea:focus {
+.form textarea:focus {
     outline: none;
 }
 
-.subscribe input[type="submit"] {
+.form input[type="submit"] {
     border-radius: 50px;
     border: none;
     background-color: var(--maincolor);
@@ -168,8 +175,18 @@
     cursor: pointer;
     transition: 0.4s;
     height: 50px;
+    margin-left:20px ;
 }
 
-.subscribe input[type="submit"]:hover {
+.form input[type="submit"]:hover {
     background-color: #0075ab;
+}
+
+.subscribe{
+    display: flex;
+    flex-direction: column;
+}
+
+.error{
+    color: #a3270d;
 }
